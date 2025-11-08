@@ -1,3 +1,7 @@
+## What's new?
+
+- Bug fixed
+
 ## Falzee
 
 **Bahasa Indonesia:**  
