@@ -36,12 +36,32 @@ private:
   Napi::Value AddBlock(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
     if (info.Length() < 2) {
-      Napi::TypeError::New(env, "timestamp dan data diperlukan").ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, "timestamp and data required").ThrowAsJavaScriptException();
       return env.Null();
     }
 
-    std::string timestamp = info[0].As<Napi::String>();
-    std::string data = info[1].As<Napi::String>();
+    // Timestamp
+    std::string timestamp;
+    if (info[0].IsString()) {
+        timestamp = info[0].As<Napi::String>();
+    } else if (info[0].IsNumber()) {
+        timestamp = std::to_string(info[0].As<Napi::Number>().Int64Value());
+    } else {
+        // fallback: pakai JSON stringify untuk objek atau tipe lain
+        Napi::Value tsVal = info[0];
+        timestamp = tsVal.ToString().Utf8Value();
+    }
+    
+    // Data
+    std::string data;
+    if (info[1].IsString()) {
+        data = info[1].As<Napi::String>();
+    } else {
+        // Semua tipe lain akan dikonversi jadi JSON string
+        Napi::Value dataVal = info[1];
+        data = dataVal.ToString().Utf8Value();
+    }
+
     unsigned long nonce = 0;
 
     if (info.Length() >= 3 && info[2].IsNumber()) {
