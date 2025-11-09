@@ -8,15 +8,15 @@
 
 ## Falzee
 
-**Bahasa Indonesia:**  
-Falzee adalah proyek eksperimen pribadi yang dibuat menggunakan **Node.js** dan **C++ (N-API)**.  
-Tujuan utamanya hanya untuk **belajar**, **eksperimen**, dan **uji coba sederhana**.  
-Tidak disarankan untuk digunakan dalam proyek **produksi** atau **finansial nyata**.
-
 **English:**  
 Falzee is a small experimental project built with **Node.js** and **C++ (N-API)**.  
 It’s made purely for **learning**, **experimentation**, and **simple testing**.  
 Not recommended for **production** or **real financial systems**.
+
+**Bahasa Indonesia:**  
+Falzee adalah proyek eksperimen pribadi yang dibuat menggunakan **Node.js** dan **C++ (N-API)**.  
+Tujuan utamanya hanya untuk **belajar**, **eksperimen**, dan **uji coba sederhana**.  
+Tidak disarankan untuk digunakan dalam proyek **produksi** atau **finansial nyata**.
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "name": "falzee",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Eksperimen kecil untuk memahami cara kerja blockchain menggunakan Node.js native module (C++). Tidak direkomendasikan untuk produksi.",
   "main": "./index.js",
   "types": "./index.d.ts",
