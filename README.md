@@ -1,6 +1,10 @@
+
+![npm](https://img.shields.io/npm/v/falzee) ![License](https://img.shields.io/npm/l/falzee)
+
 ## What's new?
 
 - Bug fixed
+- Now you can directly provide data without converting it to a string
 
 ## Falzee
 
@@ -49,6 +53,7 @@ Automatically includes a **Genesis Block** as the first block.
 
 ### `addBlock(timestamp, data, nonce)`
 Adds a new block to the blockchain.
+`nonce` is optional parameter.
 
 Parameter:
 
@@ -58,7 +63,7 @@ The block creation time. Can be a string, ISO timestamp, Unix timestamp, or any 
 `data` => `any` 
 Data to be stored in the block (string, object, etc.).
 
-`nonce` => `number`
+`nonce` => `number` (optional)
 A random or custom number used to differentiate blocks, or for simple mining purposes.
 
 ### `getChain()`
@@ -73,7 +78,7 @@ Example usage:
 const chainString = chain.getChain();
 const chainArray = JSON.parse(chainString);
 
-console.log(JSON.stringify(chainArray));
+console.log(JSON.stringify(chainArray, null, 2));
 ```
 
 Example output:

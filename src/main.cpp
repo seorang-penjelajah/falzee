@@ -52,14 +52,20 @@ private:
         timestamp = tsVal.ToString().Utf8Value();
     }
     
-    // Data
+    // Data bisa berupa string, object, number, array, boolean, dll
     std::string data;
-    if (info[1].IsString()) {
-        data = info[1].As<Napi::String>();
+    Napi::Value jsData = info[1];
+  
+    if (jsData.IsString()) {
+      // Kalau sudah string, pakai langsung
+      data = jsData.As<Napi::String>();
     } else {
-        // Semua tipe lain akan dikonversi jadi JSON string
-        Napi::Value dataVal = info[1];
-        data = dataVal.ToString().Utf8Value();
+      // Kalau bukan string, otomatis ubah jadi JSON string pakai Napi
+      Napi::Object global = env.Global();
+      Napi::Object JSON = global.Get("JSON").As<Napi::Object>();
+      Napi::Function stringify = JSON.Get("stringify").As<Napi::Function>();
+      Napi::Value jsonStr = stringify.Call(JSON, { jsData });
+      data = jsonStr.As<Napi::String>();
     }
 
     unsigned long nonce = 0;
